@@ -1,16 +1,22 @@
 import '../styles/main.scss'
 
+// Импортируем картинки (убедись, что они лежат по этим путям!)
+import logoImg from '../assets/icons/logo.svg'
+import officeImg from '../assets/img/cps-office.jpg' // Если у тебя .jpeg или .png — поменяй расширение здесь
+
 const app = document.querySelector('.app')
 
 app.innerHTML = `
-  <!-- САЙДБАР (Мобильное меню) -->
+  <!-- САЙДБАР -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar__header">
       <button class="sidebar__close" id="closeBtn" aria-label="Закрыть меню">✖</button>
       <a href="/" class="sidebar__logo">
-        <span class="header__logo-text">CPS</span>
+        <img src="${logoImg}" alt="Логотип CPS" class="header__logo-img">
       </a>
-      <button class="header__btn header__btn--round header__btn--primary sidebar__search"></button>
+      <button class="header__btn header__btn--round header__btn--primary" aria-label="Поиск">
+        <span class="icon-search">🔍</span>
+      </button>
     </div>
     
     <nav class="sidebar__nav">
@@ -28,47 +34,44 @@ app.innerHTML = `
 
     <div class="sidebar__footer">
       <div class="sidebar__socials">
-        <button class="header__btn header__btn--round header__btn--primary"></button>
-        <button class="header__btn header__btn--round header__btn--primary"></button>
-        <button class="header__btn header__btn--round header__btn--primary"></button>
+        <button class="header__btn header__btn--round header__btn--primary" aria-label="Telegram">✈️</button>
+        <button class="header__btn header__btn--round header__btn--primary" aria-label="Viber">📞</button>
+        <button class="header__btn header__btn--round header__btn--primary" aria-label="VK">VK</button>
       </div>
       <a href="mailto:mail@cps.com" class="sidebar__contact">mail@cps.com</a>
       <a href="tel:88008908900" class="sidebar__phone">8 800 890 8900</a>
       
       <div class="sidebar__langs">
-        <button class="sidebar__lang sidebar__lang--active">RU</button>
-        <button class="sidebar__lang">EN</button>
-        <button class="sidebar__lang">CH</button>
+        <button class="sidebar__lang sidebar__lang--active" data-lang="RU">RU</button>
+        <button class="sidebar__lang" data-lang="EN">EN</button>
+        <button class="sidebar__lang" data-lang="CH">CH</button>
       </div>
     </div>
   </aside>
 
-  <!-- Затемнение фона -->
   <div class="overlay" id="overlay"></div>
 
   <!-- ШАПКА -->
   <header class="header">
     <div class="header__container">
+      <!-- Бургер -->
       <button class="header__burger" aria-label="Открыть меню">
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
       </button>
 
+      <!-- Логотип -->
       <a href="/" class="header__logo">
-        <span class="header__logo-text">CPS</span>
+        <img src="${logoImg}" alt="Логотип CPS" class="header__logo-img">
       </a>
 
-      <div class="header__actions-mobile">
-        <button class="header__btn header__btn--round header__btn--primary"></button>
-        <button class="header__btn header__btn--round"></button>
-      </div>
-
-      <div class="header__actions-desktop">
-        <button class="header__btn header__btn--text header__btn--primary">
-          <span class="header__btn-icon">✖</span> Оставить заявку
+      <!-- Кнопки для десктопа -->
+      <div class="header__actions">
+        <button class="header__btn header__btn--text">
+          <span class="header__btn-icon">✉️</span> Оставить заявку
         </button>
-        <button class="header__btn header__btn--text header__btn--primary">
+        <button class="header__btn header__btn--text">
           <span class="header__btn-icon">📞</span> Статус ремонта
         </button>
       </div>
@@ -83,13 +86,13 @@ app.innerHTML = `
 
       <nav class="tabs">
         <ul class="tabs__list">
-          <li class="tabs__item"><a href="#" class="tabs__link tabs__link--active">Ремонтируемые бренды</a></li>
-          <li class="tabs__item"><a href="#" class="tabs__link">Ремонтируемые устройства</a></li>
-          <li class="tabs__item"><a href="#" class="tabs__link">Дополнительные услуги</a></li>
-          <li class="tabs__item"><a href="#" class="tabs__link">Цены на услуги</a></li>
-          <li class="tabs__item"><a href="#" class="tabs__link">Адреса сервисных центров</a></li>
-          <li class="tabs__item"><a href="#" class="tabs__link">Специальные цены</a></li>
-          <li class="tabs__item"><a href="#" class="tabs__link">Отзывы</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link tabs__link--active" data-tab="brands">Ремонтируемые бренды</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link" data-tab="devices">Ремонтируемые устройства</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link" data-tab="services">Дополнительные услуги</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link" data-tab="prices">Цены на услуги</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link" data-tab="centers">Адреса сервисных центров</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link" data-tab="special">Специальные цены</a></li>
+          <li class="tabs__item"><a href="#" class="tabs__link" data-tab="reviews">Отзывы</a></li>
         </ul>
       </nav>
 
@@ -109,7 +112,7 @@ app.innerHTML = `
         </div>
         
         <div class="article__image-wrapper">
-          <img src="https://via.placeholder.com/600x400/cccccc/333333?text=CPS+Image" alt="Офис CPS" class="article__image">
+          <img src="${officeImg}" alt="Офис сервисного центра CPS" class="article__image" width="600" height="400">
         </div>
       </div>
 
@@ -149,4 +152,36 @@ readMoreBtn.addEventListener('click', () => {
     hiddenText.style.display = 'block'
     readMoreBtn.innerHTML = '<span class="article__read-more-icon">▲</span> Скрыть'
   }
+})
+
+// --- ЛОГИКА ТАБОВ ---
+const tabs = document.querySelectorAll('.tabs__link')
+
+tabs.forEach((tab) => {
+  tab.addEventListener('click', function (e) {
+    e.preventDefault()
+    tabs.forEach((t) => t.classList.remove('tabs__link--active'))
+    this.classList.add('tabs__link--active')
+  })
+})
+
+// --- ЛОГИКА САЙДБАРА ---
+const sidebarLinks = document.querySelectorAll('.sidebar__link')
+
+sidebarLinks.forEach((link) => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault()
+    sidebarLinks.forEach((l) => l.classList.remove('sidebar__link--active'))
+    this.classList.add('sidebar__link--active')
+  })
+})
+
+// --- ЛОГИКА ЯЗЫКОВ ---
+const langBtns = document.querySelectorAll('.sidebar__lang')
+
+langBtns.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    langBtns.forEach((b) => b.classList.remove('sidebar__lang--active'))
+    this.classList.add('sidebar__lang--active')
+  })
 })
