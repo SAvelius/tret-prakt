@@ -1,0 +1,26 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  padding: 24px 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 32px;
+    width: 4px;
+    background-color: $color-primary;
+  }
+  padding-left: 12px;
+  
+  @include tablet {
+    font-size: 32px;
+    padding: 32px 0 32px 16px;
+  }
+}

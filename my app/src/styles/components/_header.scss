@@ -1,0 +1,81 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  background-color: $color-white;
+  padding: 16px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $padding-mobile;
+    margin: 0 auto;
+    max-width: $container-width;
+
+    @include tablet {
+      padding: 0 $padding-desktop;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 24px;
+    margin-right: 16px;
+  }
+
+  &__burger-line {
+    display: block;
+    height: 2px;
+    background-color: $color-primary;
+    border-radius: 2px;
+  }
+
+  &__logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  &__actions-mobile {
+    display: flex;
+    gap: 12px;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__actions-desktop {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__btn--round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $color-border;
+  }
+
+  &__btn--primary {
+    background-color: $color-primary;
+  }
+
+  &__btn--text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    background: none;
+    color: #333;
+  }
+}
