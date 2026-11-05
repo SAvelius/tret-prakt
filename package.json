@@ -1,0 +1,25 @@
+{
+  "name": "my-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss-sort-media-queries": "^5.2.0",
+    "sass": "^1.77.0",
+    "sharp": "^0.33.4",
+    "svgo": "^3.3.2",
+    "vite": "^5.2.0",
+    "vite-plugin-image-optimizer": "^1.1.8"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
