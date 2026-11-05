@@ -1,0 +1,119 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background-color: $color-white;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  transform: translateX(-100%); // Скрыт за левым краем
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+
+  &--open {
+    transform: translateX(0); // Выезжает
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__close {
+    font-size: 20px;
+    color: $color-primary;
+  }
+
+  &__nav {
+    flex: 1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__link {
+    font-size: 16px;
+    color: $color-text-main;
+    position: relative;
+
+    &--active {
+      color: $color-text-muted;
+      &::before {
+        content: '';
+        position: absolute;
+        left: -24px;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  &__contact,
+  &__phone {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__phone {
+    font-size: 20px;
+  }
+
+  &__langs {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  &__lang {
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-text-muted;
+
+    &--active {
+      color: $color-primary;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &--show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
