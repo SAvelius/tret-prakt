@@ -44,7 +44,7 @@
   }
 
   &__actions {
-    display: none; // Скрыто на мобилке
+    display: none;
 
     @include tablet {
       display: flex;

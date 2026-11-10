@@ -1,13 +1,10 @@
 import '../styles/main.scss'
-
-// Импортируем картинки (убедись, что они лежат по этим путям!)
 import logoImg from '../assets/icons/logo.svg'
-import officeImg from '../assets/img/cps-office.jpg' // Если у тебя .jpeg или .png — поменяй расширение здесь
+import officeImg from '../assets/img/cps-office.jpg'
 
 const app = document.querySelector('.app')
 
 app.innerHTML = `
-  <!-- САЙДБАР -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar__header">
       <button class="sidebar__close" id="closeBtn" aria-label="Закрыть меню">✖</button>
@@ -51,22 +48,18 @@ app.innerHTML = `
 
   <div class="overlay" id="overlay"></div>
 
-  <!-- ШАПКА -->
   <header class="header">
     <div class="header__container">
-      <!-- Бургер -->
       <button class="header__burger" aria-label="Открыть меню">
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
       </button>
 
-      <!-- Логотип -->
       <a href="/" class="header__logo">
         <img src="${logoImg}" alt="Логотип CPS" class="header__logo-img">
       </a>
 
-      <!-- Кнопки для десктопа -->
       <div class="header__actions">
         <button class="header__btn header__btn--text">
           <span class="header__btn-icon">✉️</span> Оставить заявку
@@ -78,7 +71,6 @@ app.innerHTML = `
     </div>
   </header>
 
-  <!-- ОСНОВНОЙ КОНТЕНТ -->
   <main class="main">
     <div class="main__container">
       
@@ -120,7 +112,6 @@ app.innerHTML = `
   </main>
 `
 
-// --- ЛОГИКА МОБИЛЬНОГО МЕНЮ ---
 const burgerBtn = document.querySelector('.header__burger')
 const sidebar = document.getElementById('sidebar')
 const closeBtn = document.getElementById('closeBtn')
@@ -140,7 +131,6 @@ burgerBtn.addEventListener('click', openMenu)
 closeBtn.addEventListener('click', closeMenu)
 overlay.addEventListener('click', closeMenu)
 
-// --- ЛОГИКА КНОПКИ "ЧИТАТЬ ДАЛЕЕ" ---
 const readMoreBtn = document.querySelector('.article__read-more')
 const hiddenText = document.querySelector('.article__text--hidden')
 
@@ -154,7 +144,6 @@ readMoreBtn.addEventListener('click', () => {
   }
 })
 
-// --- ЛОГИКА ТАБОВ ---
 const tabs = document.querySelectorAll('.tabs__link')
 
 tabs.forEach((tab) => {
@@ -165,7 +154,6 @@ tabs.forEach((tab) => {
   })
 })
 
-// --- ЛОГИКА САЙДБАРА ---
 const sidebarLinks = document.querySelectorAll('.sidebar__link')
 
 sidebarLinks.forEach((link) => {
@@ -176,7 +164,6 @@ sidebarLinks.forEach((link) => {
   })
 })
 
-// --- ЛОГИКА ЯЗЫКОВ ---
 const langBtns = document.querySelectorAll('.sidebar__lang')
 
 langBtns.forEach((btn) => {
