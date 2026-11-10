@@ -1,6 +1,6 @@
 import '../styles/main.scss'
 import logoImg from '../assets/icons/logo.svg'
-import officeImg from '../assets/img/cps-office.jpg'
+import officeImg from '../assets/img/cps-office.png'
 
 const app = document.querySelector('.app')
 
